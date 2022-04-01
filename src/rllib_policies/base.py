@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Union
 
 import gym
 import numpy as np
@@ -8,7 +8,12 @@ from ray.rllib.models.modelv2 import restore_original_dimensions
 
 
 class NetworkBase(nn.Module):
-    def __init__(self, net: nn.Module, feature_length: int, fields: List[str]) -> None:
+    def __init__(
+        self,
+        net: nn.Module,
+        feature_length: int,
+        fields: Union[Dict[str, str], List[str]],
+    ) -> None:
         """Base class for networks used in Rllib policy.
 
         Network is defined via a pytorch module to process one or
