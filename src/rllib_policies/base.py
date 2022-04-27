@@ -60,7 +60,9 @@ class NetworkBase(nn.Module):
         self.feature_length = feature_length
         self.fields = fields
 
-    def get_obs(self, obs: Dict[str, torch.Tensor], rnn_input: bool) -> torch.Tensor:
+    def get_obs(
+        self, obs: Dict[str, torch.Tensor], rnn_input: bool
+    ) -> Union[List[torch.Tensor], Dict[str, torch.Tensor]]:
         """Read observations from input dictionary.
 
         Parameters
